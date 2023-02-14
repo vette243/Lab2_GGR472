@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src='script.js'></script>
+    <link rel="stylesheet" href="style.css" >
+    <title>My web map</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css' rel='stylesheet' />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+
+<div class="heading">
+
+    <body>
+
+        <h1>My Web Mapp</h1>
+
+    <div id="My_Map">
+        <!--Script for the map starts here-->  
+        <script> 
+        mapboxgl.accessToken = 'pk.eyJ1IjoidmV0dGUyNDMiLCJhIjoiY2xlNHJqbHNrMDVzNzNucDJrYm90djFrcyJ9.j2TYaVOLnNy8bDEv82GwLQ';
+
+        var map = new mapboxgl.Map({
+            container: "My_Map",
+            style: 'mapbox://styles/mapbox/streets-v12',
+            center: [-79.3, 43.6],
+            zoom: 9
+          });
+          map.on('load', function() {
+            map.addSource('Green_Spaces', {
+              type: 'geojson',
+              data: 'Green Spaces.geojson'
+            });
+            map.addSource('neighborhoods', {
+                type: 'geojson',
+                data: 'Neighbourhoods.geojson'
+            });
+            map.addLayer({
+              id: 'Neighbours',
+              type: 'line',
+              source: 'neighborhoods',
+              paint: {
+                'fill-color': '#f00',
+                'fill-opacity': 1
+              }
+            });
+            map.addLayer({
+                id: 'public green',
+                type: 'line',
+                source: 'Green Spaces',
+                paint: {
+                  'fill-color': '#118806',
+                  'fill-opacity': 1
+                }
+            })
+          });
+        </script>
+    </div>
+        <p style="color:rgb(20, 86, 15)">
+            <strong><em>Explore more Green in Urban Space </em></strong><br>
+            <br>
+            <br>
+            <a href="https://api.mapbox.com/styles/v1/vette243/cle4pjfh6002401pal69tqaif.html?title=view&access_token=pk.eyJ1IjoidmV0dGUyNDMiLCJhIjoiY2xkbTB3OWZxMDR0YzQwbGlnNGdjNzJ2YiJ9.IspQGMfPo0GQ9WiD-BQcvg&zoomwheel=true&fresh=true#12.05/43.68967/-79.35794"
+             target="_blank">
+                Explore Green Spaces in your neighborhoods😊</a>
+         </p>
+
+
+ <!--social media bar-->
+        <br>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+        <div class="wrapper">
+            <div class="button">
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                </div>
+                <span>Facebook</span>
+            </div>
+            <div class="button">
+                <div class="icon">
+                    <i class="fab fa-twitter"></i>
+                </div>
+                <span>Twitter</span>
+            </div>
+            <div class="button">
+                <div class="icon">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <span>Instagram</span>
+            </div>
+            <div class="button">
+                <div class="icon">
+                    <i class="fab fa-github"></i>
+                </div>
+                <span>Github</span>
+            </div>
+            <div class="button">
+                <div class="icon">
+                    <i class="fab fa-youtube"></i>
+                </div>
+                <span>YouTube</span>
+            </div>
+        </div>
+    </body>
+
+
+</html>
